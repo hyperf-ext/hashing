@@ -1,7 +1,13 @@
 <?php
 
 declare(strict_types=1);
-
+/**
+ * This file is part of hyperf-ext/hashing.
+ *
+ * @link     https://github.com/hyperf-ext/hashing
+ * @contact  eric@zhu.email
+ * @license  https://github.com/hyperf-ext/hashing/blob/master/LICENSE
+ */
 namespace HyperfExt\Hashing\Driver;
 
 use HyperfExt\Hashing\Contract\DriverInterface;
@@ -39,10 +45,6 @@ class Argon2IDriver extends AbstractDriver implements DriverInterface
 
     /**
      * Create a new driver instance.
-     *
-     * @param array $options
-     *
-     * @return void
      */
     public function __construct(array $options = [])
     {
@@ -55,19 +57,14 @@ class Argon2IDriver extends AbstractDriver implements DriverInterface
     /**
      * Hash the given value.
      *
-     * @param string $value
-     * @param array  $options
-     *
-     * @return string
-     *
      * @throws \RuntimeException
      */
     public function make(string $value, array $options = []): string
     {
         $hash = password_hash($value, $this->algorithm(), [
             'memory_cost' => $this->memory($options),
-            'time_cost'   => $this->time($options),
-            'threads'     => $this->threads($options),
+            'time_cost' => $this->time($options),
+            'threads' => $this->threads($options),
         ]);
 
         if ($hash === false) {
@@ -78,23 +75,7 @@ class Argon2IDriver extends AbstractDriver implements DriverInterface
     }
 
     /**
-     * Get the algorithm that should be used for hashing.
-     *
-     * @return int
-     */
-    protected function algorithm()
-    {
-        return PASSWORD_ARGON2I;
-    }
-
-    /**
      * Check the given plain value against a hash.
-     *
-     * @param string $value
-     * @param string $hashedValue
-     * @param array  $options
-     *
-     * @return bool
      *
      * @throws \RuntimeException
      */
@@ -109,25 +90,18 @@ class Argon2IDriver extends AbstractDriver implements DriverInterface
 
     /**
      * Check if the given hash has been hashed using the given options.
-     *
-     * @param string $hashedValue
-     * @param array  $options
-     *
-     * @return bool
      */
     public function needsRehash(string $hashedValue, array $options = []): bool
     {
         return password_needs_rehash($hashedValue, $this->algorithm(), [
             'memory_cost' => $this->memory($options),
-            'time_cost'   => $this->time($options),
-            'threads'     => $this->threads($options),
+            'time_cost' => $this->time($options),
+            'threads' => $this->threads($options),
         ]);
     }
 
     /**
      * Set the default password memory factor.
-     *
-     * @param int $memory
      *
      * @return $this
      */
@@ -141,8 +115,6 @@ class Argon2IDriver extends AbstractDriver implements DriverInterface
     /**
      * Set the default password timing factor.
      *
-     * @param int $time
-     *
      * @return $this
      */
     public function setTime(int $time): self
@@ -155,8 +127,6 @@ class Argon2IDriver extends AbstractDriver implements DriverInterface
     /**
      * Set the default password threads factor.
      *
-     * @param int $threads
-     *
      * @return $this
      */
     public function setThreads(int $threads): self
@@ -167,11 +137,17 @@ class Argon2IDriver extends AbstractDriver implements DriverInterface
     }
 
     /**
-     * Extract the memory cost value from the options array.
-     *
-     * @param array $options
+     * Get the algorithm that should be used for hashing.
      *
      * @return int
+     */
+    protected function algorithm()
+    {
+        return PASSWORD_ARGON2I;
+    }
+
+    /**
+     * Extract the memory cost value from the options array.
      */
     protected function memory(array $options): int
     {
@@ -180,10 +156,6 @@ class Argon2IDriver extends AbstractDriver implements DriverInterface
 
     /**
      * Extract the time cost value from the options array.
-     *
-     * @param array $options
-     *
-     * @return int
      */
     protected function time(array $options): int
     {
@@ -192,10 +164,6 @@ class Argon2IDriver extends AbstractDriver implements DriverInterface
 
     /**
      * Extract the threads value from the options array.
-     *
-     * @param array $options
-     *
-     * @return int
      */
     protected function threads(array $options): int
     {

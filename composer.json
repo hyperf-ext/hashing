@@ -7,7 +7,7 @@
         "hyperf",
         "hashing"
     ],
-    "description": "The unofficial Hyperf Hashing package.",
+    "description": "The Hyperf Hashing package.",
     "authors": [
         {
             "name": "Eric Zhu",

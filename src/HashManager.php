@@ -1,7 +1,13 @@
 <?php
 
 declare(strict_types=1);
-
+/**
+ * This file is part of hyperf-ext/hashing.
+ *
+ * @link     https://github.com/hyperf-ext/hashing
+ * @contact  eric@zhu.email
+ * @license  https://github.com/hyperf-ext/hashing/blob/master/LICENSE
+ */
 namespace HyperfExt\Hashing;
 
 use Hyperf\Contract\ConfigInterface;
@@ -33,10 +39,6 @@ class HashManager implements HashInterface
 
     /**
      * Get information about the given hashed value.
-     *
-     * @param string $hashedValue
-     *
-     * @return array
      */
     public function info(string $hashedValue): array
     {
@@ -45,11 +47,6 @@ class HashManager implements HashInterface
 
     /**
      * Hash the given value.
-     *
-     * @param string $value
-     * @param array  $options
-     *
-     * @return string
      */
     public function make(string $value, array $options = []): string
     {
@@ -58,12 +55,6 @@ class HashManager implements HashInterface
 
     /**
      * Check the given plain value against a hash.
-     *
-     * @param string $value
-     * @param string $hashedValue
-     * @param array  $options
-     *
-     * @return bool
      */
     public function check(string $value, string $hashedValue, array $options = []): bool
     {
@@ -72,11 +63,6 @@ class HashManager implements HashInterface
 
     /**
      * Check if the given hash has been hashed using the given options.
-     *
-     * @param string $hashedValue
-     * @param array  $options
-     *
-     * @return bool
      */
     public function needsRehash(string $hashedValue, array $options = []): bool
     {
@@ -86,10 +72,6 @@ class HashManager implements HashInterface
     /**
      * Get a driver instance.
      *
-     * @param string|null $name
-     *
-     * @return \HyperfExt\Hashing\Contract\DriverInterface
-     *
      * @throws \InvalidArgumentException
      */
     public function getDriver(?string $name = null): DriverInterface
@@ -98,9 +80,9 @@ class HashManager implements HashInterface
             return $this->drivers[$name];
         }
 
-        $name = $name ?: $this->config->get('ext-hashing.default', 'bcrypt');
+        $name = $name ?: $this->config->get('hashing.default', 'bcrypt');
 
-        $config = $this->config->get("ext-hashing.driver.{$name}");
+        $config = $this->config->get("hashing.driver.{$name}");
         if (empty($config) or empty($config['class'])) {
             throw new InvalidArgumentException(sprintf('The hashing driver config %s is invalid.', $name));
         }

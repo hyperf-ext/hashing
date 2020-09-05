@@ -16,7 +16,7 @@ composer require hyperf-ext/hashing
 php bin/hyperf.php vendor:publish hyperf-ext/hashing
 ```
 
-> 配置文件位于 `config/autoload/ext-hashing.php`。
+> 配置文件位于 `config/autoload/hashing.php`。
 
 ## 默认配置
 
@@ -48,7 +48,7 @@ return [
 ];
 ```
 
-你可以在 `config/autoload/ext-hashing.php` 配置文件中配置默认哈希驱动程序。目前支持三种驱动程序： Bcrypt 和 Argon2（Argon2i 和 Argon2id variants）。
+你可以在 `config/autoload/hashing.php` 配置文件中配置默认哈希驱动程序。目前支持三种驱动程序： Bcrypt 和 Argon2（Argon2i 和 Argon2id variants）。
 
 > 注意：Argon2i 驱动程序需要 PHP 7.2.0 或更高版本，而 Argon2id 驱动程序则需要 PHP 7.3.0 或更高版本。
 

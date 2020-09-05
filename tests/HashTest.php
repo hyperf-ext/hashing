@@ -1,7 +1,13 @@
 <?php
 
 declare(strict_types=1);
-
+/**
+ * This file is part of hyperf-ext/hashing.
+ *
+ * @link     https://github.com/hyperf-ext/hashing
+ * @contact  eric@zhu.email
+ * @license  https://github.com/hyperf-ext/hashing/blob/master/LICENSE
+ */
 namespace HyperfTest;
 
 use HyperfExt\Hashing\Driver\Argon2IdDriver;
@@ -18,7 +24,7 @@ class HashTest extends TestCase
 {
     public function testBasicBcryptHashing()
     {
-        $hasher = new BcryptDriver;
+        $hasher = new BcryptDriver();
         $value = $hasher->make('password');
         $this->assertNotSame('password', $value);
         $this->assertTrue($hasher->check('password', $value));
@@ -29,11 +35,11 @@ class HashTest extends TestCase
 
     public function testBasicArgon2iHashing()
     {
-        if (!defined('PASSWORD_ARGON2I')) {
+        if (! defined('PASSWORD_ARGON2I')) {
             $this->markTestSkipped('PHP not compiled with Argon2i hashing support.');
         }
 
-        $hasher = new Argon2IDriver;
+        $hasher = new Argon2IDriver();
         $value = $hasher->make('password');
         $this->assertNotSame('password', $value);
         $this->assertTrue($hasher->check('password', $value));
@@ -44,11 +50,11 @@ class HashTest extends TestCase
 
     public function testBasicArgon2idHashing()
     {
-        if (!defined('PASSWORD_ARGON2ID')) {
+        if (! defined('PASSWORD_ARGON2ID')) {
             $this->markTestSkipped('PHP not compiled with Argon2id hashing support.');
         }
 
-        $hasher = new Argon2IdDriver;
+        $hasher = new Argon2IdDriver();
         $value = $hasher->make('password');
         $this->assertNotSame('password', $value);
         $this->assertTrue($hasher->check('password', $value));
@@ -64,7 +70,7 @@ class HashTest extends TestCase
     {
         $this->expectException(RuntimeException::class);
 
-        if (!defined('PASSWORD_ARGON2I')) {
+        if (! defined('PASSWORD_ARGON2I')) {
             $this->markTestSkipped('PHP not compiled with Argon2i hashing support.');
         }
 

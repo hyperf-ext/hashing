@@ -1,12 +1,18 @@
 <?php
 
 declare(strict_types=1);
-
+/**
+ * This file is part of hyperf-ext/hashing.
+ *
+ * @link     https://github.com/hyperf-ext/hashing
+ * @contact  eric@zhu.email
+ * @license  https://github.com/hyperf-ext/hashing/blob/master/LICENSE
+ */
 namespace HyperfExt\Hashing;
 
+use Hyperf\Utils\ApplicationContext;
 use HyperfExt\Hashing\Contract\DriverInterface;
 use HyperfExt\Hashing\Contract\HashInterface;
-use Hyperf\Utils\ApplicationContext;
 
 abstract class Hash
 {
@@ -32,6 +38,6 @@ abstract class Hash
 
     public static function needsRehash(string $hashedValue, array $options = [], ?string $driverName = null): bool
     {
-        return static::getDriver($driverName)->needsRehash($hashedValue. $options);
+        return static::getDriver($driverName)->needsRehash($hashedValue . $options);
     }
 }

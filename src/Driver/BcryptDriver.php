@@ -1,7 +1,13 @@
 <?php
 
 declare(strict_types=1);
-
+/**
+ * This file is part of hyperf-ext/hashing.
+ *
+ * @link     https://github.com/hyperf-ext/hashing
+ * @contact  eric@zhu.email
+ * @license  https://github.com/hyperf-ext/hashing/blob/master/LICENSE
+ */
 namespace HyperfExt\Hashing\Driver;
 
 use HyperfExt\Hashing\Contract\DriverInterface;
@@ -25,10 +31,6 @@ class BcryptDriver extends AbstractDriver implements DriverInterface
 
     /**
      * Create a new driver instance.
-     *
-     * @param array $options
-     *
-     * @return void
      */
     public function __construct(array $options = [])
     {
@@ -38,11 +40,6 @@ class BcryptDriver extends AbstractDriver implements DriverInterface
 
     /**
      * Hash the given value.
-     *
-     * @param string $value
-     * @param array  $options
-     *
-     * @return string
      *
      * @throws \RuntimeException
      */
@@ -62,12 +59,6 @@ class BcryptDriver extends AbstractDriver implements DriverInterface
     /**
      * Check the given plain value against a hash.
      *
-     * @param string $value
-     * @param string $hashedValue
-     * @param array  $options
-     *
-     * @return bool
-     *
      * @throws \RuntimeException
      */
     public function check(string $value, string $hashedValue, array $options = []): bool
@@ -81,11 +72,6 @@ class BcryptDriver extends AbstractDriver implements DriverInterface
 
     /**
      * Check if the given hash has been hashed using the given options.
-     *
-     * @param string $hashedValue
-     * @param array  $options
-     *
-     * @return bool
      */
     public function needsRehash(string $hashedValue, array $options = []): bool
     {
@@ -96,8 +82,6 @@ class BcryptDriver extends AbstractDriver implements DriverInterface
 
     /**
      * Set the default password work factor.
-     *
-     * @param int $rounds
      *
      * @return $this
      */
@@ -110,10 +94,6 @@ class BcryptDriver extends AbstractDriver implements DriverInterface
 
     /**
      * Extract the cost value from the options array.
-     *
-     * @param array $options
-     *
-     * @return int
      */
     protected function cost(array $options = []): int
     {
