@@ -30,7 +30,7 @@ class ConfigProvider
             'publish' => [
                 [
                     'id' => 'config',
-                    'description' => 'The config for HyperfExt\\Hashing.',
+                    'description' => 'The config for hyperf-ext/hashing.',
                     'source' => __DIR__ . '/../publish/hashing.php',
                     'destination' => BASE_PATH . '/config/autoload/hashing.php',
                 ],
