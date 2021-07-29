@@ -38,6 +38,6 @@ abstract class Hash
 
     public static function needsRehash(string $hashedValue, array $options = [], ?string $driverName = null): bool
     {
-        return static::getDriver($driverName)->needsRehash($hashedValue . $options);
+        return static::getDriver($driverName)->needsRehash($hashedValue, $options);
     }
 }
