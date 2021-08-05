@@ -30,7 +30,6 @@
     },
     "require": {
         "php": ">=7.3",
-        "ext-swoole": ">=4.5",
         "hyperf/config": "^2.1",
         "hyperf/di": "^2.1",
         "hyperf/framework": "^2.1"
@@ -45,7 +44,7 @@
         "sort-packages": true
     },
     "scripts": {
-        "test": "co-phpunit --prepend tests/bootstrap.php -c phpunit.xml --colors=always",
+        "test": "phpunit --prepend tests/bootstrap.php -c phpunit.xml --colors=always",
         "analyse": "phpstan analyse --memory-limit 1024M -l 0 ./src",
         "cs-fix": "php-cs-fixer fix $1"
     },
