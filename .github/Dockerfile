@@ -44,4 +44,5 @@ WORKDIR /opt/www
 COPY . /opt/www
 
 RUN composer install
+RUN composer run analyse
 RUN composer run test
