@@ -1,5 +1,5 @@
 {
-    "name": "hyperf-ext/hashing",
+    "name": "mfuns-cn/hyperf-hashing",
     "type": "library",
     "license": "MIT",
     "keywords": [
@@ -28,15 +28,17 @@
             "HyperfTest\\": "tests"
         }
     },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "require": {
-        "php": ">=7.3",
-        "hyperf/config": "^2.1",
-        "hyperf/di": "^2.1",
-        "hyperf/framework": "^2.1"
+        "php": ">=8.0",
+        "hyperf/config": "3.0.*",
+        "hyperf/di": "3.0.*",
+        "hyperf/framework": "3.0.*"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.0",
-        "hyperf/testing": "^2.1",
+        "hyperf/testing": "3.0.*",
         "phpstan/phpstan": "^0.12",
         "swoole/ide-helper": "dev-master"
     },

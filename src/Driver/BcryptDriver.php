@@ -1,6 +1,7 @@
 <?php
 
 declare(strict_types=1);
+
 /**
  * This file is part of hyperf-ext/hashing.
  *
@@ -8,6 +9,7 @@ declare(strict_types=1);
  * @contact  eric@zhu.email
  * @license  https://github.com/hyperf-ext/hashing/blob/master/LICENSE
  */
+
 namespace HyperfExt\Hashing\Driver;
 
 use HyperfExt\Hashing\Contract\DriverInterface;
@@ -20,17 +22,19 @@ class BcryptDriver extends AbstractDriver implements DriverInterface
      *
      * @var int
      */
-    protected $rounds = 10;
+    protected int $rounds = 10;
 
     /**
      * Indicates whether to perform an algorithm check.
      *
      * @var bool
      */
-    protected $verifyAlgorithm = false;
+    protected bool $verifyAlgorithm = false;
 
     /**
-     * Create a new driver instance.
+     * Create a new hasher instance.
+     *
+     * @param array $options
      */
     public function __construct(array $options = [])
     {
@@ -41,7 +45,11 @@ class BcryptDriver extends AbstractDriver implements DriverInterface
     /**
      * Hash the given value.
      *
-     * @throws \RuntimeException
+     * @param string $value
+     * @param array $options
+     * @return string
+     *
+     * @throws RuntimeException
      */
     public function make(string $value, array $options = []): string
     {
@@ -59,7 +67,12 @@ class BcryptDriver extends AbstractDriver implements DriverInterface
     /**
      * Check the given plain value against a hash.
      *
-     * @throws \RuntimeException
+     * @param string $value
+     * @param string $hashedValue
+     * @param array $options
+     * @return bool
+     *
+     * @throws RuntimeException
      */
     public function check(string $value, string $hashedValue, array $options = []): bool
     {
@@ -72,6 +85,10 @@ class BcryptDriver extends AbstractDriver implements DriverInterface
 
     /**
      * Check if the given hash has been hashed using the given options.
+     *
+     * @param string $hashedValue
+     * @param array $options
+     * @return bool
      */
     public function needsRehash(string $hashedValue, array $options = []): bool
     {
@@ -83,17 +100,21 @@ class BcryptDriver extends AbstractDriver implements DriverInterface
     /**
      * Set the default password work factor.
      *
+     * @param int $rounds
      * @return $this
      */
-    public function setRounds(int $rounds): self
+    public function setRounds(int $rounds): static
     {
-        $this->rounds = $rounds;
+        $this->rounds = (int) $rounds;
 
         return $this;
     }
 
     /**
      * Extract the cost value from the options array.
+     *
+     * @param array $options
+     * @return int
      */
     protected function cost(array $options = []): int
     {

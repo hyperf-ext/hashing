@@ -1,6 +1,7 @@
 <?php
 
 declare(strict_types=1);
+
 /**
  * This file is part of hyperf-ext/hashing.
  *
@@ -8,6 +9,7 @@ declare(strict_types=1);
  * @contact  eric@zhu.email
  * @license  https://github.com/hyperf-ext/hashing/blob/master/LICENSE
  */
+
 namespace HyperfExt\Hashing\Driver;
 
 use HyperfExt\Hashing\Contract\DriverInterface;
@@ -57,7 +59,7 @@ class Argon2IDriver extends AbstractDriver implements DriverInterface
     /**
      * Hash the given value.
      *
-     * @throws \RuntimeException
+     * @throws RuntimeException
      */
     public function make(string $value, array $options = []): string
     {
@@ -77,7 +79,7 @@ class Argon2IDriver extends AbstractDriver implements DriverInterface
     /**
      * Check the given plain value against a hash.
      *
-     * @throws \RuntimeException
+     * @throws RuntimeException
      */
     public function check(string $value, string $hashedValue, array $options = []): bool
     {
