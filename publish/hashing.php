@@ -10,6 +10,18 @@ declare(strict_types=1);
  * @license  https://github.com/hyperf-ext/hashing/blob/master/LICENSE
  */
 
+use HyperfExt\Hashing\Driver\Argon2IdDriver;
+use HyperfExt\Hashing\Driver\Argon2IDriver;
+use HyperfExt\Hashing\Driver\BcryptDriver;
+
+/*
+ * This file is part of hyperf-ext/hashing.
+ *
+ * @link     https://github.com/hyperf-ext/hashing
+ * @contact  eric@zhu.email
+ * @license  https://github.com/hyperf-ext/hashing/blob/master/LICENSE
+ */
+
 return [
     /*
     |--------------------------------------------------------------------------
@@ -37,7 +49,7 @@ return [
         */
 
         'bcrypt' => [
-            'class' => \HyperfExt\Hashing\Driver\BcryptDriver::class,
+            'class' => BcryptDriver::class,
             'options' => [
                 'rounds' => env('BCRYPT_ROUNDS', 10),
             ],
@@ -55,7 +67,7 @@ return [
         */
 
         'argon2i' => [
-            'class' => \HyperfExt\Hashing\Driver\Argon2IDriver::class,
+            'class' => Argon2IDriver::class,
             'options' => [
                 'memory' => 1024,
                 'threads' => 2,
@@ -64,7 +76,7 @@ return [
         ],
 
         'argon2id' => [
-            'class' => \HyperfExt\Hashing\Driver\Argon2IdDriver::class,
+            'class' => Argon2IdDriver::class,
             'options' => [
                 'memory' => 1024,
                 'threads' => 2,

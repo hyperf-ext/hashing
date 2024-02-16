@@ -18,12 +18,14 @@ use HyperfExt\Hashing\Contract\HashInterface;
 use HyperfExt\Hashing\Driver\BcryptDriver;
 use InvalidArgumentException;
 
+use function Hyperf\Support\make;
+
 class HashManager implements HashInterface
 {
     /**
      * The config instance.
      *
-     * @var \Hyperf\Contract\ConfigInterface
+     * @var ConfigInterface
      */
     protected $config;
 

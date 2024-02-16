@@ -32,13 +32,13 @@
     "prefer-stable": true,
     "require": {
         "php": ">=8.0",
-        "hyperf/config": "3.0.*",
-        "hyperf/di": "3.0.*",
-        "hyperf/framework": "3.0.*"
+        "hyperf/config": "3.1.*",
+        "hyperf/di": "3.1.*",
+        "hyperf/framework": "3.1.*"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.0",
-        "hyperf/testing": "3.0.*",
+        "hyperf/testing": "3.1.*",
         "phpstan/phpstan": "^1.0",
         "swoole/ide-helper": "dev-master"
     },
@@ -46,7 +46,7 @@
         "sort-packages": true
     },
     "scripts": {
-        "test": "phpunit --prepend tests/bootstrap.php -c phpunit.xml --colors=always",
+        "test": "phpunit --bootstrap tests/bootstrap.php -c phpunit.xml --colors=always",
         "analyse": "phpstan analyse --memory-limit 1024M -l 0 ./src",
         "cs-fix": "php-cs-fixer fix $1"
     },
